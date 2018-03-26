@@ -9,7 +9,9 @@ the unsupervised terminnology extractor CollTerm.
 To train the models, CollTerm should be applied over each corpus document, to produce the models then used
 by the kas-term supervised extension, resulting in a final ranked list of term candidates.
 
-The included example covers Slovene academic writing. The models were computed from the KAS corpus (http://nl.ijs.si/kas/) of PhD theses, and one example thesis is included.
+The included example covers Slovene academic writing.
+The models were computed from the KAS corpus (http://nl.ijs.si/kas/) of PhD theses.
+Included is one example thesis and the background files (patterns, weighted lemmas and results of an annotation campaign).
 
 ## CollTerm
 
