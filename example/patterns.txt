@@ -1,0 +1,139 @@
+=4terms
+
+#izboljšanje kvalitete življenja bolnikov
+Nc.*	Nc.*g.*	Nc.*g.*	Nc.*g.*
+
+#adheziv na osnovi topil
+Nc.*	S.*	Nc.*	Nc.*g.*
+
+#tisk na papirne podlage
+Nc.*	S.*	A.*	Nc.*
+
+#gostota prostih nosilcev naboja
+Nc.*	A.*g.*	Nc.*g.*	Nc.*g.*
+
+#metoda magnetronskega ionskega naprševanja
+Nc.*	A.*g.*	A.*g.*	Nc.*g.*
+
+#odvod napetosti po času
+Nc.*	Nc.*g.*	S.*	Nc.*
+
+#preiskava materialov in konstrukcij
+Nc.*	Nc.*g.*	C.*	Nc.*g.*
+
+#horizontala in vertikala izobraževanja
+Nc.*	C.*	Nc.*	Nc.*g
+
+#molekula in molekulska skupina
+Nc.*	C.*	A.*	Nc.*
+
+#terciarno področje uporabe računalnika
+A.*	Nc.*	Nc.*g.*	Nc.*g.*
+
+#kovinsko držalo za slojnik
+A.*	Nc.*	S.*	Nc.*
+
+#shematični prikaz triplastnega odtisa
+A.*	Nc.*	A.*g.*	Nc.*g.*
+
+#Keesomov dipolni efekt usmerjanja
+A.*	A.*	Nc.*n.*	Nc.*g.*
+
+#merjen v protiurni smeri
+A.*	S.*	A.*	Nc.*
+
+#odvisen od časa izpostavljenosti
+A.*	S.*	Nc.*	Nc.*g.*
+
+#prevodni in polprevodni polimer
+A.*	C.*	A.*	Nc.*
+
+#električen prevodnik in dielektrik
+A.*	Nc.*	C.*	Nc.*
+
+#računalniško generirani model molekul
+R.*	A.*	Nc.*	Nc.*g.*
+
+#vnaprej obsojen na neuspeh
+R.*	A.*	S.*	Nc.*
+
+#električno funkcionalna tiskarska barva
+R.*	A.*	A.*	Nc.*
+
+#delovati kot sprožitveni faktor
+#Vm.*	C.*	A.*	Nc.*
+
+#pokazati kot statistično značilen
+#Vm.*	C.*	R.*	A.*
+
+=3terms
+
+#mesto vnosa sile
+Nc.*	Nc.*g.*	Nc.*g.*
+
+#pojav kavnega obroča
+Nc.*	A.*g.*	Nc.*g.*
+
+#enota za prevodnost
+Nc.*	S.*	Nc.*
+
+#prosti nosilec naboja & agree(1,2)
+A.*	Nc.*	Nc.*g.*
+
+#ogromna škoda podjetjem
+A.*	Nc.*	Nc.*d.*
+
+#organska svetleča dioda
+A.*	A.*	Nc.*
+
+#odporen na korozijo
+A.*	S.*	Nc.*a.*
+
+#lahko prevodni polimer
+R.*	A.*	Nc.*
+
+#prevajati električni tok
+#Vm.*	A.*	Nc.*
+
+#reagirati z monomerom
+#Vm.*	S.*	Nc.*
+
+#preprečiti flokulacijo nanodelcev
+#Vm.*	Nc..a.*	Nc..g.*
+
+#doseči temperaturo sintranja
+#Vm.*	Nc..a.*	Nc.*g.*
+
+#delovati kot regulator
+#Vm.*	C.*	Nc.*
+
+#v tisku uveljavljati
+#S.*	Nc.*	Vm.*
+
+#za etično šteti
+#S.*	R.*	Vm.*
+
+=2terms
+
+#tiskarsko sito
+A.*	Nc.*
+
+#intenziteta nihanja
+Nc.*	Nc..g.*
+#preprečiti flokulacijo
+#Vm.*	Nc..a.*
+
+#ustreza priporočilu
+#Vm.*	Nc..i.*
+
+#škropiti takoj
+#Vm.*	R.*
+
+#skrbno nadzirati
+#R.*	Vm.*
+
+=1terms
+
+#rezkanje
+Nc.*
+
