@@ -94,7 +94,7 @@ Notice that two different models - the single-word term (SWT) and the multi-word
 
 ### Training the supervised extractor
 
-For training the supervised extractor, there are the python2.7 ```train_swt.py``` and ```train_mwt.py``` scripts prepared. The human annotations on Slovene academic texts from the KAS project, together with the CollTerm-relevant statistics, are available in the ```kas.term.json``` file.
+For training the supervised extractor, there are the python2.7 ```train_swt.py``` and ```train_mwt.py``` scripts prepared. The human annotations on Slovene academic texts from the KAS project, together with the CollTerm-relevant statistics, are available in the ```example/kas.term.json``` file.
 
 ## Citing our work
 
