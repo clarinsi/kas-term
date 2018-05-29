@@ -1,4 +1,5 @@
-#-*-coding:utf8-*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from sklearn.metrics import roc_auc_score,roc_curve,auc,classification_report
 from sklearn.svm import SVC,SVR,LinearSVR
 from sklearn.linear_model import SGDRegressor

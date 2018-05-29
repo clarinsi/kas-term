@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import sys
 import os
 mwt_factor=1.

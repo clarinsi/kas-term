@@ -1,16 +1,33 @@
-# kas-term - Supervised terminology extractor as an extension of the unsupervised CollTerm tool
+# kas-term - a supervised terminology extractor
 
-## Unsupervised terminology extraction
+kas-term extracts terms with their statistics from documents in an annotated corpus,
+using a MSD (PoS) pattern file,
+and a lexicon of manually annotated terms. 
 
-For extracting candidate terms and their statistics, you should first apply the CollTerm tool over each of your documents.
+This terms extractor is a supervised learning extension to
+the unsupervised terminnology extractor CollTerm.
+To train the models, CollTerm should be applied over each corpus document, to produce the models then used
+by the kas-term supervised extension, resulting in a final ranked list of term candidates.
 
-### CollTerm prerequisites
+The included example covers Slovene academic writing.
+The models were computed from the KAS corpus (http://nl.ijs.si/kas/) of PhD theses.
+Included is one example thesis and the background files (patterns, weighted lemmas and results of an annotation campaign).
 
-The CollTerm tool requires, aside from the annotated corpus, two files:
-- a pattern file specifying the morphosyntactic patterns that are taken as term candidates (exemplary Slovene file is ```example/patterns.txt```)
-- a file with IDF (inverse document frequency) weights of lemmas relevant for the project (exemplary Slovene file, calculated on the whole academic corpus KAS, to downplay the general academic terminology such as "thesis" or "chapter", is ```example/kas.idf```)
+## CollTerm
 
-While the patterns have to be defined by hand, the IDF weights should be generated with the python2.7 script ```calculate_idf.py``` which reads from the standard input sequences of lemmas, with empty lines encoding document boundaries. A toy example of running the script, calculated on the example thesis ```example/kas-9916```, assuming that pages are actually documents (as this is one single document), would be this:
+### CollTerm background resources
+
+The input to CollTerm is an annotated corpus and two additional files:
+- a pattern file specifying the morphosyntactic patterns of term candidates
+(exemplary Slovene file is ```example/patterns.txt```)
+- a file with IDF weights of relevant lemmas (the exemplary Slovene file is ```example/kas.idf```,
+and calculated on the whole KAS, to downplay the general academic terminology such as "thesis" or "chapter")
+
+The script ```calculate_idf.py``` is used to generate the IDF weights of lemmas.
+From standard input it reads a list of lemmas,
+with empty lines encoding document boundaries.
+A toy example calculated on the example thesis ```example/kas-9916```,
+assuming that pages are actually documents (as this is one single document), is:
 
 ```
 $ sed 's/<\/page>//g' example/kas-9916 | grep -v '^<' | cut -f 3 | tr [:upper:] [:lower:] | python calculate_idf.py
@@ -29,9 +46,15 @@ socialen	0.4594
 
 ### Running CollTerm.py
 
-For running CollTerm.py as a standalone tool, you should run it with python2.7 without arguments and go through its help prompt.
+For running CollTerm.py as a standalone tool, you should run it with
+python2.7 without arguments and go through its help prompt.
 
-If you use CollTerm just for feature extraction for the supervised terminology extraction, you should run the handy ```extract_features.py``` script in case your data is encoded in a similar fashion to the examplary ```example/kas-9916``` file. You might need to adjust the ```-pos``` flag otherwise (```positions of tokens, POS tags and lemmas (zero-based indices)```).
+If you use CollTerm just for feature extraction for the supervised
+terminology extraction, you should run the handy
+```extract_features.py``` script in case your data is encoded in a
+similar fashion to the examplary ```example/kas-9916``` file. You
+might need to adjust the ```-pos``` flag otherwise (```positions of
+tokens, POS tags and lemmas (zero-based indices)```).
 
 The example of running the script on the ```example/kas-9916``` file is this:
 
@@ -73,7 +96,7 @@ Notice that two different models - the single-word term (SWT) and the multi-word
 
 ### Training the supervised extractor
 
-For training the supervised extractor, there are the python2.7 ```train_swt.py``` and ```train_mwt.py``` scripts prepared. The human annotations on Slovene academic texts from the KAS project, together with the CollTerm-relevant statistics, are available in the ```kas.term.json``` file.
+For training the supervised extractor, there are the python2.7 ```train_swt.py``` and ```train_mwt.py``` scripts prepared. The human annotations on Slovene academic texts from the KAS project, together with the CollTerm-relevant statistics, are available in the ```example/kas.term.json``` file.
 
 ## Citing our work
 
