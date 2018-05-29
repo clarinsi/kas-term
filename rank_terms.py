@@ -1,5 +1,7 @@
 import sys
 import os
+mwt_factor=1.
+swt_factor=1.
 file=sys.argv[1]
 X_idx={}
 for line in open(file+'.tfidf.1'):
@@ -16,7 +18,7 @@ terms=X_idx.keys()
 X=[X_idx[e] for e in terms]
 from sklearn.externals import joblib
 clf=joblib.load('model.swt')
-decisions=list(clf.decision_function(X))
+decisions=list(clf.decision_function(X)*swt_factor)
 labels=list(clf.predict(X))
 X_idx={}
 for length in range(2,5):
@@ -38,7 +40,7 @@ terms.extend(terms2)
 X=[X_idx[e] for e in terms2]
 from sklearn.externals import joblib
 clf=joblib.load('model.mwt')
-decisions.extend(clf.decision_function(X))
+decisions.extend(clf.decision_function(X)*mwt_factor)
 labels.extend(clf.predict(X))
 for term,prob,response in sorted(zip(terms,decisions,labels),key=lambda x:-x[1]):
     sys.stdout.write(term+'\t'+str(response)+'\t'+str(prob)+'\n')
