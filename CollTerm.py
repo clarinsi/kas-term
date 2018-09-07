@@ -606,6 +606,8 @@ def normalize_result():
 	if norm==0:
 		norm=1
 	values=[a for a,b in results]
+	if len(values)==0:
+		return
 	min_value=min(values)
 	max_value=max(values)
 	range=float(max_value-min_value)

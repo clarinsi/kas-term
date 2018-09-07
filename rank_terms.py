@@ -10,7 +10,7 @@ for line in open(file+'.tfidf.1'):
     lemma,seq,patfreq,statval=line.split('\t')
     statval=float(statval)
     pattern,freq=patfreq[1:-1].split(', ')
-    lemma=lemma+'\t'+seq
+    lemma=lemma+'\t'+seq+'\t'+pattern
     X_idx[lemma]={}
     X_idx[lemma]['tfidf']=statval
     X_idx[lemma]['avgtoklen']=len(seq)
@@ -29,11 +29,11 @@ for length in range(2,5):
             lemma,seq,patfreq,statval=line.split('\t')
             statval=float(statval)
             pattern,freq=patfreq[1:-1].split(', ')
-            lemma=lemma+'\t'+seq
+            lemma=lemma+'\t'+seq+'\t'+pattern
             if stat=='dice':
                 X_idx[lemma]={}
                 X_idx[lemma]['frequency']=freq
-                X_idx[lemma]['pattern']=pattern
+                #X_idx[lemma]['pattern']=pattern
             if lemma not in X_idx:
                 continue
             X_idx[lemma][stat]=statval
