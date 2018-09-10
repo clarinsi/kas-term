@@ -23,7 +23,7 @@ y=[]
 group=[]
 X=[]
 y1_pred={'frequency':[],'tfidf':[]}
-for entry in json.load(open('kas.term.json')):
+for entry in json.load(open('example/kas.term.json')):
   if entry['length']==1:
     y.append(np.mean([coarse_map[entry['annotator_'+str(i+1)]] for i in range(4)]))
     group.append(entry['document_id'])

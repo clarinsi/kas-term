@@ -564,8 +564,8 @@ def read_input_text():
 		phrase=check_ngram_for_phrases(poses)
 		if phrase!=None and check_ngram_for_stops(tokens):
 			if lemmas not in lemma_phrase_map:
-				lemma_phrase_map[lemmas]=set()
-			lemma_phrase_map[lemmas].add(phrase)
+				lemma_phrase_map[lemmas]={}
+			lemma_phrase_map[lemmas][phrase]=lemma_phrase_map[lemmas].get(phrase,0)+1
 			if ranking_method in ('dice','mi','tfidf'):
 				ngram_frequency_distr[lemmas]=ngram_frequency_distr.get(lemmas,0)+1
 			if lemmas not in lemma_token_frequency_distr:
@@ -588,7 +588,7 @@ def check_ngram_for_phrases(pos_ngram):
 				valid=False
 				break
 		if valid:
-			return '|'.join([e.pattern for e in phrase])
+			return ' '.join([e.pattern for e in phrase])
 
 def check_ngram_for_stops(token_ngram):
 	if stop_phrase==[]:
@@ -629,23 +629,23 @@ def output_result():
 			if value<threshold:
 				break
 		if seq==0:
-			output=' '.join(ngram).encode('utf-8')+'\t('+'#'.join(lemma_phrase_map[ngram])+', '+str(ngram_frequency_distr[ngram])+')'
+			output=' '.join(ngram).encode('utf-8')+'\t('+'|'.join([e[0] for e in sorted(lemma_phrase_map[ngram].items(),key=lambda x:-x[1])])+', '+str(ngram_frequency_distr[ngram])+')'
 			if terms==0:
 				output+='\t'+str(round(value,5))
 			output_file.write(output+'\n')
 		elif seq==1:
-			output=' '.join(sorted(lemma_token_frequency_distr[ngram].items(),key=lambda x:x[1])[-1][0]).encode('utf-8')+'\t('+'#'.join(lemma_phrase_map[ngram])+', '+str(ngram_frequency_distr[ngram])+')'
+			output=' '.join(sorted(lemma_token_frequency_distr[ngram].items(),key=lambda x:x[1])[-1][0]).encode('utf-8')+'\t('+'|'.join([e[0] for e in sorted(lemma_phrase_map[ngram].items(),key=lambda x:-x[1])])+', '+str(ngram_frequency_distr[ngram])+')'
 			if terms==0:
 				output+='\t'+str(round(value,5))
 			output_file.write(output+'\n')
 		elif seq==2:
-			output=' '.join(ngram).encode('utf-8')+'\t'+' '.join(sorted(lemma_token_frequency_distr[ngram].items(),key=lambda x:x[1])[-1][0]).encode('utf-8')+'\t('+'#'.join(lemma_phrase_map[ngram])+', '+str(ngram_frequency_distr[ngram])+')'
+			output=' '.join(ngram).encode('utf-8')+'\t'+' '.join(sorted(lemma_token_frequency_distr[ngram].items(),key=lambda x:x[1])[-1][0]).encode('utf-8')+'\t('+'|'.join([e[0] for e in sorted(lemma_phrase_map[ngram].items(),key=lambda x:-x[1])])+', '+str(ngram_frequency_distr[ngram])+')'
 			if terms==0:
 				output+='\t'+str(round(value,5))
 			output_file.write(output+'\n')
 		else:
 			for token_sequence,frequency in lemma_token_frequency_distr[ngram].iteritems():
-				output=' '.join(token_sequence).encode('utf-8')+'\t('+'#'.join(lemma_phrase_map[ngram])+', '+str(ngram_frequency_distr[ngram])+')'
+				output=' '.join(token_sequence).encode('utf-8')+'\t('+'|'.join([e[0] for e in sorted(lemma_phrase_map[ngram].items(),key=lambda x:-x[1])])+', '+str(ngram_frequency_distr[ngram])+')'
 				if terms==0:
 					output+='\t'+str(frequency)+'\t'+str(round(value,5))
 				output_file.write(output+'\n')

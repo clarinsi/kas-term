@@ -45,4 +45,4 @@ clf=joblib.load(os.path.join(reldir,'model.mwt'))
 decisions.extend(clf.decision_function(X)*mwt_factor)
 labels.extend(clf.predict(X))
 for term,prob,response in sorted(zip(terms,decisions,labels),key=lambda x:-x[1]):
-    sys.stdout.write(term+'\t'+str(response)+'\t'+str(prob)+'\n')
+    sys.stdout.write(term+'\t'+str(prob)+'\n')

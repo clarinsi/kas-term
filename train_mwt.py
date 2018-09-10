@@ -22,7 +22,7 @@ coarse_map={u'n_nerelevantno': 0., u'x_izvenpodro\u010dni': 1., u'z_znanstveno':
 #coarse_map={u'n_nerelevantno': 0., u'x_izvenpodro\u010dni': 0., u'z_znanstveno': 0., 't_termin':1.}
 y=[]
 X=[]
-for entry in json.load(open('kas.term.json')):
+for entry in json.load(open('example/kas.term.json')):
   if entry['length']>1:
     y.append(np.mean([coarse_map[entry['annotator_'+str(i+1)]] for i in range(4)]))
     x={}
