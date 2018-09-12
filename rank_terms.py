@@ -20,8 +20,11 @@ terms=X_idx.keys()
 X=[X_idx[e] for e in terms]
 from sklearn.externals import joblib
 clf=joblib.load(os.path.join(reldir,'model.swt'))
-decisions=list(clf.decision_function(X)*swt_factor)
-labels=list(clf.predict(X))
+labels=[]
+decisions=[]
+if len(X)!=0:
+    decisions=list(clf.decision_function(X)*swt_factor)
+    labels=list(clf.predict(X))
 X_idx={}
 for length in range(2,5):
     for stat in ('dice','chisq','ll','mi','tscore','tfidf'):
@@ -42,7 +45,8 @@ terms.extend(terms2)
 X=[X_idx[e] for e in terms2]
 from sklearn.externals import joblib
 clf=joblib.load(os.path.join(reldir,'model.mwt'))
-decisions.extend(clf.decision_function(X)*mwt_factor)
-labels.extend(clf.predict(X))
+if len(X)!=0:
+    decisions.extend(clf.decision_function(X)*mwt_factor)
+    labels.extend(clf.predict(X))
 for term,prob,response in sorted(zip(terms,decisions,labels),key=lambda x:-x[1]):
     sys.stdout.write(term+'\t'+str(prob)+'\n')
