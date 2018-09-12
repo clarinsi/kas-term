@@ -1,139 +1,275 @@
+# Term MSD pattterns for Slovene
+# KAS project, http://nl.ijs.si/kas/
+# Used in conjuctions with kas-term, https://github.com/clarinsi/kas-term
+# kas-term outputs lines of the form
+# upraven odbor<TAB>upravni odbor<TAB>A.* Nc.*<TAB>0.320
+# 1. string of lemmas, 2. most frequent form 3. matched pattern,
+# 4. confidence score (if negative, then "non-term")
+# Lines starting with #! are an if-then-else cascade of MSD REs
+# used for finding the term citation form
+# given a form/lemma/MSD lexicon
+# 'l' refers to the corresponding lemma of the word,
+# 'f' to the one from the most frequent from)
+
 =4terms
 
 #izboljšanje kvalitete življenja bolnikov
-Nc.*	Nc.*g.*	Nc.*g.*	Nc.*g.*
+Nc.*	Nc..g	Nc..g	Nc..g
+#! l	f	f	f 
 
 #adheziv na osnovi topil
-Nc.*	S.*	Nc.*	Nc.*g.*
+Nc.*	S.	Nc.*	Nc..g
+#! l	f	f	f 
 
 #tisk na papirne podlage
-Nc.*	S.*	A.*	Nc.*
+Nc.*	S.	A.*	Nc.*
+#! l	f	f	f 
 
 #gostota prostih nosilcev naboja
-Nc.*	A.*g.*	Nc.*g.*	Nc.*g.*
+#vidik uravnoteženega sistema kazalnikov
+Nc.*	A....g	Nc..g	Nc..g
+#! l	A..mpg	Ncmpg 	Nc..g
+#! l	A..fpg	Ncfpg 	Nc..g
+#! l	A..npg	Ncnpg 	Nc..g
+#! l	A..msg	Ncmsg 	Nc..g
+#! l	A..fsg	Ncfsg 	Nc..g
+#! l	A..nsg	Ncnsg 	Nc..g
 
 #metoda magnetronskega ionskega naprševanja
-Nc.*	A.*g.*	A.*g.*	Nc.*g.*
+Nc.*	A....g	A....g	Nc..g
+#! l	A..msg	A..msg	Ncmsg
+#! l	A..fsg	A..fsg	Ncfsg
+#! l	A..nsg	A..nsg	Ncnsg
+#! l	A..mpg	A..mpg	Ncmpg
+#! l	A..fpg	A..fpg	Ncfpg
+#! l	A..npg	A..npg	Ncnpg
 
 #odvod napetosti po času
-Nc.*	Nc.*g.*	S.*	Nc.*
+Nc.*	Nc..g	S.	Nc.*
+#! l	f	l	f
 
 #preiskava materialov in konstrukcij
-Nc.*	Nc.*g.*	C.*	Nc.*g.*
+Nc.*	Nc..g	Cc	Nc..g
+#! l	f	l	f
 
 #horizontala in vertikala izobraževanja
-Nc.*	C.*	Nc.*	Nc.*g
+Nc.*	Cc	Nc.*	Nc..g
+#! l	l	l	f
 
 #molekula in molekulska skupina
-Nc.*	C.*	A.*	Nc.*
+Nc.*	Cc	A.*	Nc.*
+#! l	l	A..msny	Ncmsn
+#! l	l	A..msnn	Ncmsn
+#! l	l	A..fsn	Ncfsn
+#! l	l	A..nsn	Ncnsn
+#! l	l	A..mpn	Ncmpn
+#! l	l	A..fpn	Ncfpn
+#! l	l	A..npn	Ncnpn
 
 #terciarno področje uporabe računalnika
-A.*	Nc.*	Nc.*g.*	Nc.*g.*
+A.*	Nc.*	Nc..g	Nc..g
+#! A..msnn	Ncmsn	f	f
+#! A..fsn	Ncfsn	f	f
+#! A..nsn	Ncnsn	f	f
 
 #kovinsko držalo za slojnik
-A.*	Nc.*	S.*	Nc.*
+A.*	Nc.*	S.	Nc.*
+#! A..msnn	Ncmsn	l	f
+#! A..fsn	Ncfsn	l	f
+#! A..nsn	Ncnsn	l	f
 
 #shematični prikaz triplastnega odtisa
-A.*	Nc.*	A.*g.*	Nc.*g.*
+A.*	Nc.*	A...g	Nc..g
+#! A..msny	Ncmsn	A..msg	Ncmsg
+#! A..fsn	Ncfsn	A..msg	Ncmsg
+#! A..nsn	Ncnsn	A..msg	Ncmsg
+#! A..msny	Ncmsn	A..fsg	Ncfsg
+#! A..fsn	Ncfsn	A..fsg	Ncfsg
+#! A..nsn	Ncnsn	A..fsg	Ncfsg
+#! A..msny	Ncmsn	A..nsg	Ncnsg
+#! A..fsn	Ncfsn	A..nsg	Ncnsg
+#! A..nsn	Ncnsn	A..nsg	Ncnsg
 
 #Keesomov dipolni efekt usmerjanja
-A.*	A.*	Nc.*n.*	Nc.*g.*
+A.*	A.*	Nc..n	Nc..g
+#! A..msny	A..msny	Ncmsn	f
+#! A..msnn	A..msny	Ncmsn	f
+#! A..msny	A..msnn	Ncmsn	f
+#! A..msnn	A..msnn	Ncmsn	f
+#! A..fsn	A..fsn	Ncfsn	f
+#! A..nsn	A..nsn	Ncnsn	f
 
 #merjen v protiurni smeri
-A.*	S.*	A.*	Nc.*
+A.*	S.	A.*	Nc.*
+#! l	Sn	A..msny	Ncmsn
+#! l	Sn	A..msnn	Ncmsn
+#! l	Sg	A..msg	Ncmsg
+#! l	Sd	A..msd	Ncmsd
+#! l	Sa	A..msay	Ncmsay
+#! l	Sa	A..msa	Ncmsan
+#! l	Sl	A..msl	Ncmsl
+#! l	Si	A..msi	Ncmsi
+#! l	Sn	A..fsn	Ncfsn
+#! l	Sg	A..fsg	Ncfsg
+#! l	Sd	A..fsd	Ncfsd
+#! l	Sa	A..fsa	Ncfsa
+#! l	Sl	A..fsl	Ncfsl
+#! l	Si	A..fsi	Ncfsi
+#! l	Sn	A..nsn	Ncnsn
+#! l	Sg	A..nsg	Ncnsg
+#! l	Sd	A..nsd	Ncnsd
+#! l	Sa	A..nsa	Ncnsa
+#! l	Sl	A..nsl	Ncnsl
+#! l	Si	A..nsi	Ncnsi
 
 #odvisen od časa izpostavljenosti
-A.*	S.*	Nc.*	Nc.*g.*
+A.*	S.	Nc.*	Nc..g
+#! l	Sn	Nc.sn	f
+#! l	Sg	Nc.sg	f
+#! l	Sd	Nc.sd	f
+#! l	Sa	Ncmsa.	f
+#! l	Sl	Nc.sl	f
+#! l	Si	Nc.si	f
 
 #prevodni in polprevodni polimer
-A.*	C.*	A.*	Nc.*
+#Tu določna oblika pridevnika
+A.*	Cc	A.*	Nc.*
+#! A..msny	Cc	A..msny	Ncmsn
+#! A..msny	Cc	A..msnn	Ncmsn
+#! A..msnn	Cc	A..msny	Ncmsn
+#! A..msnn	Cc	A..msnn	Ncmsn
+#! A..fsn	Cc	A..fsn	Ncfsn
+#! A..nsn	Cc	A..nsn	Ncnsn
+#! A..mpn	Cc	A..mpn	Ncmpn
+#! A..fpn	Cc	A..fpn	Ncfpn
+#! A..npn	Cc	A..npn	Ncnpn
 
-#električen prevodnik in dielektrik
-A.*	Nc.*	C.*	Nc.*
+#električni prevodnik in dielektrik
+#Sumljivo ujemanje!
+A.*	Nc.*	Cc	Nc.*
+#! A..msny	Ncmsn	l	l
+#! A..msnn	Ncmsn	l	l
+#! A..fsn	Ncfsn	l	l
+#! A..nsn	Ncnsn	l	l
+#! A..mpn	Ncmpn	l	l
+#! A..fpn	Ncfpn	l	l
+#! A..npn	Ncnpn	l	l
 
 #računalniško generirani model molekul
-R.*	A.*	Nc.*	Nc.*g.*
+R.*	A.*	Nc.*	Nc..g
+#! l	A..msny	Ncmsn	f
+#! l	A..msnn	Ncmsn	f
+#! l	A..fsn	Ncfsn	f
+#! l	A..nsn	Ncnsn	f
+#! l	A..mpn	Ncmpn	f
+#! l	A..fpn	Ncfpn	f
+#! l	A..npn	Ncnpn	f
 
 #vnaprej obsojen na neuspeh
-R.*	A.*	S.*	Nc.*
+R.*	A.*	S.	Nc.*   
+#! l	l	Sn	Nc.sn  
+#! l	l	Sg	Nc.sg  
+#! l	l	Sd	Nc.sd
+#! l	l	Sa	Nc.sa.
+#! l	l	Sl	Nc.sl  
+#! l	l	Si	Nc.si  
 
 #električno funkcionalna tiskarska barva
 R.*	A.*	A.*	Nc.*
+#! l	A..msny	A..msny	Ncmsn
+#! l	A..msny	A..msnn	Ncmsn
+#! l	A..msnn	A..msny	Ncmsn
+#! l	A..msnn	A..msnn	Ncmsn
+#! l	A..fsn	A..fsn	Ncfsn
+#! l	A..nsn	A..nsn	Ncnsn
+#! l	A..mpn	A..mpn	Ncmpn
+#! l	A..fpn	A..fpn	Ncfpn
+#! l	A..npn	A..npn	Ncnpn
 
-#delovati kot sprožitveni faktor
-#Vm.*	C.*	A.*	Nc.*
-
-#pokazati kot statistično značilen
-#Vm.*	C.*	R.*	A.*
-
-=3terms
+# =3terms
 
 #mesto vnosa sile
-Nc.*	Nc.*g.*	Nc.*g.*
+Nc.*	Nc..g	Nc..g
+#! l	f	f
 
 #pojav kavnega obroča
-Nc.*	A.*g.*	Nc.*g.*
+Nc.*	A.*g.*	Nc..g
+#! l	A..msg	Ncmsg
+#! l	A..fsg	Ncfsg
+#! l	A..nsg	Ncnsg
+#! l	A..mpg	Ncmpg
+#! l	A..fpg	Ncfpg
+#! l	A..npg	Ncnpg
 
 #enota za prevodnost
-Nc.*	S.*	Nc.*
+Nc.*	S.	Nc.*
+#! l	l	l
 
-#prosti nosilec naboja & agree(1,2)
-A.*	Nc.*	Nc.*g.*
+#prosti nosilec naboja
+A.*	Nc.*	Nc..g
+#! A..msny	Ncmsn	f
+#! A..msnn	Ncmsn	f
+#! A..fsn	Ncfsn	f
+#! A..nsn	Ncnsn	f
+#! A..mpn	Ncmpn	f
+#! A..fpn	Ncfpn	f
+#! A..npn	Ncnpn	f
 
 #ogromna škoda podjetjem
-A.*	Nc.*	Nc.*d.*
+A.*	Nc.*	Nc..d
+#! A..msny	Ncmsn	f
+#! A..msnn	Ncmsn	f
+#! A..fsn	Ncfsn	f
+#! A..nsn	Ncnsn	f
+#! A..mpn	Ncmpn	f
+#! A..fpn	Ncfpn	f
+#! A..npn	Ncnpn	f
 
 #organska svetleča dioda
 A.*	A.*	Nc.*
+#! A..msny	A..msny	Ncmsn
+#! A..msny	A..msnn	Ncmsn
+#! A..msnn	A..msny	Ncmsn
+#! A..msnn	A..msnn	Ncmsn
+#! A..fsn	A..fsn	Ncfsn
+#! A..nsn	A..nsn	Ncnsn
+#! A..mpn	A..mpn	Ncmpn
+#! A..fpn	A..fpn	Ncfpn
+#! A..npn	A..npn	Ncnpn
 
 #odporen na korozijo
-A.*	S.*	Nc.*a.*
+#zaposlen v banki
+#A.*	S.	Nc..a.  <- this pattern doesn't work in term extraction!
+A.*	S.	Nc.*a.
+#! l	Sa	Nc..sa.
+#! l	Sa	Nc.pa  
 
 #lahko prevodni polimer
 R.*	A.*	Nc.*
-
-#prevajati električni tok
-#Vm.*	A.*	Nc.*
-
-#reagirati z monomerom
-#Vm.*	S.*	Nc.*
-
-#preprečiti flokulacijo nanodelcev
-#Vm.*	Nc..a.*	Nc..g.*
-
-#doseči temperaturo sintranja
-#Vm.*	Nc..a.*	Nc.*g.*
-
-#delovati kot regulator
-#Vm.*	C.*	Nc.*
-
-#v tisku uveljavljati
-#S.*	Nc.*	Vm.*
-
-#za etično šteti
-#S.*	R.*	Vm.*
+#! l 	A..msny	Ncmsn
+#! l 	A..msnn	Ncmsn
+#! l 	A..fsn	Ncfsn
+#! l 	A..nsn	Ncnsn
 
 =2terms
 
 #tiskarsko sito
 A.*	Nc.*
+#! A..msny	Ncmsn
+#! A..msnn	Ncmsn
+#! A..fsn	Ncfsn
+#! A..nsn	Ncnsn
+#! A..mpn	Ncmpn
+#! A..fpn	Ncfpn
+#! A..npn	Ncnpn
 
 #intenziteta nihanja
-Nc.*	Nc..g.*
-#preprečiti flokulacijo
-#Vm.*	Nc..a.*
-
-#ustreza priporočilu
-#Vm.*	Nc..i.*
-
-#škropiti takoj
-#Vm.*	R.*
-
-#skrbno nadzirati
-#R.*	Vm.*
+#zveza ekonomistov
+Nc.*	Nc..g
+#! l	f
 
 =1terms
 
 #rezkanje
 Nc.*
-
+#! l
