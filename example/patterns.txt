@@ -25,6 +25,15 @@ Nc.*	S.	Nc.*	Nc..g
 Nc.*	S.	A.*	Nc.*
 #! l	f	f	f 
 
+#indeks zmogljivosti desnega prekata
+Nc.*	Nc..g	A....g	Nc..g
+#! l	f	A..msg	Ncmsg
+#! l	f	A..fsg	Ncfsg
+#! l	f	A..nsg	Ncnsg
+#! l	f	A..mpg	Ncmpg
+#! l	f	A..fpg	Ncfpg
+#! l	f	A..npg	Ncnpg
+
 #gostota prostih nosilcev naboja
 #vidik uravnoteženega sistema kazalnikov
 Nc.*	A....g	Nc..g	Nc..g
@@ -79,7 +88,7 @@ A.*	Nc.*	S.	Nc.*
 #! A..nsn	Ncnsn	l	f
 
 #shematični prikaz triplastnega odtisa
-A.*	Nc.*	A...g	Nc..g
+A.*	Nc.*	A....g	Nc..g
 #! A..msny	Ncmsn	A..msg	Ncmsg
 #! A..fsn	Ncfsn	A..msg	Ncmsg
 #! A..nsn	Ncnsn	A..msg	Ncmsg
