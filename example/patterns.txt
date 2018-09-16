@@ -212,7 +212,7 @@ Nc.*	A.*g.*	Nc..g
 
 #enota za prevodnost
 Nc.*	S.	Nc.*
-#! l	l	l
+#! l	l	f
 
 #prosti nosilec naboja
 A.*	Nc.*	Nc..g
@@ -250,7 +250,7 @@ A.*	A.*	Nc.*
 #zaposlen v banki
 #A.*	S.	Nc..a.  <- this pattern doesn't work in term extraction!
 A.*	S.	Nc.*a.
-#! l	Sa	Nc..sa.
+#! l	Sa	Nc.sa.
 #! l	Sa	Nc.pa  
 
 #lahko prevodni polimer
